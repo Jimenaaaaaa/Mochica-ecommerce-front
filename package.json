@@ -21,7 +21,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
+    "test:prod": "echo \"Error: no test specified\" && exit 0",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
