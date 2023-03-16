@@ -7,7 +7,7 @@ import {
 
 // Tengo que seguir rellenando el repo con el resto de metodos.
 
-export interface UsersApiRepoStructure {
+export interface UserRepoStructure {
   loadUser(): Promise<User>;
   loginUser(user: LoginData): Promise<LoginData>;
   registerUser(user: ProtoUser): Promise<User>; // Tb se puede llamar REGISTER
@@ -50,6 +50,6 @@ export class UserRepo {
       throw new Error(`Error http: ${resp.status} ${resp.statusText}`);
 
     const data = await resp.json();
-    return data; //Devuelve un objeto con el token
+    return data.results; //Devuelve un objeto con el token
   }
 }
