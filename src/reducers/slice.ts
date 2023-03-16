@@ -14,12 +14,10 @@ import { User } from "../models/models/user";
 
 type LoginData = {
   token: string;
-  isLoadingUsers: false;
   user: User;
 };
 
-type State = {
-  isLogged: boolean;
+export type State = {
   loggedUser:
     | {
         token: string | null;
@@ -30,12 +28,11 @@ type State = {
 };
 
 const initialState: State = {
-  isLogged: false,
   loggedUser: {
     token: null,
     user: {},
   },
-  role: null,
+  role: "user",
 };
 
 const slice = createSlice({
