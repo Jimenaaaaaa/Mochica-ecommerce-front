@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { LoginData } from "../models/models/user";
+import { LoginData, RegisterData } from "../models/models/user";
 import { login } from "../reducers/slice";
 import { UserRepo } from "../services/users.api.repo";
 
@@ -18,8 +18,19 @@ export function useUsers(repo: UserRepo) {
     }
   };
 
+  const userRegister = async (info: RegisterData) => {
+    try {
+      const data = await repo.loginUser(info);
+      // Mirar si cambio lo que devuelve el back
+      dispatch(login(data));
+    } catch (error) {
+      console.error((error as Error).message);
+    }
+  };
+
   return {
     userLogin,
+    userRegister,
   };
 }
 
