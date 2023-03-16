@@ -20,7 +20,7 @@ export function useUsers(repo: UserRepo) {
 
   const userRegister = async (info: RegisterData) => {
     try {
-      const data = await repo.loginUser(info);
+      const data = await repo.registerUser(info);
       // Mirar si cambio lo que devuelve el back
       dispatch(login(data));
     } catch (error) {
