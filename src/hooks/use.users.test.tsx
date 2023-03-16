@@ -10,13 +10,13 @@ import { store } from "../store/store";
 import { useUsers } from "./use.users";
 
 describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () => {
-  let mockPayload: User;
+  let mockInfo: User;
   let mockRepo: UserRepo;
 
   beforeEach(async () => {
-    mockPayload = {
-      username: "test",
+    mockInfo = {
       email: "test",
+      password: "test",
     } as unknown as User;
 
     mockRepo = {
@@ -25,11 +25,11 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     } as unknown as UserRepo;
 
     const TestComponent = function () {
-      const { userRegister, userLogin } = useUsers(mockRepo);
+      const { register, login } = useUsers(mockRepo);
       return (
         <>
-          <button onClick={() => userRegister(mockPayload)}>register</button>
-          <button onClick={() => userLogin(mockPayload)}>login</button>
+          <button onClick={() => register(mockInfo)}>register</button>
+          <button onClick={() => login(mockInfo)}>login</button>
         </>
       );
     };
@@ -55,7 +55,7 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     });
   });
   describe("When the TestComponent is rendered and the login button is clicked", () => {
-    test("Then, the userLogin function should be called", async () => {
+    test("Then, the loginUser function should be called", async () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[1]));
       expect(mockRepo.loginUser).toHaveBeenCalled();
