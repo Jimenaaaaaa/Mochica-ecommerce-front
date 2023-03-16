@@ -1,15 +1,13 @@
 import { Product } from "./product";
 
-// Tengo que a;adir el resto de info del user
-
 export type LoginData = {
   email: string;
-  passwd: string;
+  password: string;
 };
 
 export type RegisterData = LoginData & {
-  firstName: string;
-  surname: string;
+  name: string;
+  lastName: string;
 };
 
 export type ProtoUser = RegisterData & {
