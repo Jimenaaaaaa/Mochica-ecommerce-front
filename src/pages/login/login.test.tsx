@@ -57,7 +57,7 @@ describe("Given Login component", () => {
       const button = screen.getByRole("button");
       await userEvent.click(button);
       expect(useUsers(usersMockRepo).login).toHaveBeenCalledWith({
-        username: "test",
+        email: "test",
         password: "test",
       });
 
