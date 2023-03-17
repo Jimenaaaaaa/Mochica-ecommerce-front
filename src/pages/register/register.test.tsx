@@ -45,7 +45,9 @@ describe("Given Register component", () => {
   // Revisar esta parte del test
   describe("When the submit button is clicked", () => {
     test("Then, the handleSubmit function should be called", async () => {
-      const usersMockRepo = {} as unknown as UserRepo;
+      const usersMockRepo = {
+        registerUser: jest.fn(),
+      } as unknown as UserRepo;
       const inputs = screen.getAllByRole("textbox");
       await userEvent.type(inputs[0], "test");
       await userEvent.type(inputs[1], "test");
@@ -53,7 +55,7 @@ describe("Given Register component", () => {
       await userEvent.type(inputs[3], "test");
       const button = screen.getByRole("button");
       await userEvent.click(button);
-      expect(useUsers(usersMockRepo).register).toHaveBeenCalledWith({
+      expect(usersMockRepo.registerUser).toHaveBeenCalledWith({
         name: "test",
         lastName: "test",
         email: "test",
