@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-render-in-setup */
 import { act, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
