@@ -21,21 +21,22 @@ export function useUsers(repo: UserRepo) {
     }
   };
 
-  const register = async (info: RegisterData) => {
-    try {
-      const data = await repo.registerUser(info);
-      // Mirar si cambio lo que devuelve el back
-      dispatch(loginSlice(data));
-      //
-    } catch (error) {
-      console.error((error as Error).message);
-    }
-  };
+  // Creo que no necesito un custom hok para register porque no manda nada al estado
+  // const register = async (info: RegisterData) => {
+  //   try {
+  //     const data = await repo.registerUser(info);
+  //     // Mirar si cambio lo que devuelve el back
+  //     dispatch(loginSlice(data));
+  //     //
+  //   } catch (error) {
+  //     console.error((error as Error).message);
+  //   }
+  // };
 
   return {
     users,
     login,
-    register,
+    // register,
   };
 }
 
