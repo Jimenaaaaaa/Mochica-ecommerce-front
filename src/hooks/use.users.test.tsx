@@ -58,7 +58,7 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
   describe("When the TestComponent is rendered and the login button is clicked", () => {
     test("Then, the loginUser function should be called", async () => {
       const elements = await screen.findAllByRole("button");
-      await act(async () => userEvent.click(elements[1]));
+      await act(async () => userEvent.click(elements[0]));
       expect(mockRepo.loginUser).toHaveBeenCalled();
     });
   });
