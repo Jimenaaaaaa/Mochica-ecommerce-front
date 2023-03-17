@@ -3,9 +3,7 @@ import { SyntheticEvent, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../hooks/use.users";
 import { LoginData } from "../../models/models/user";
-
 import { UserRepo } from "../../services/users.api.repo";
-
 import styles from "./login.module.scss";
 
 export default function Login() {
