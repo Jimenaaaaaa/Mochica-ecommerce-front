@@ -25,6 +25,7 @@ export type State = {
       }
     | {};
   role: string | null;
+  // users: User[];
 };
 
 const initialState: State = {
@@ -33,6 +34,7 @@ const initialState: State = {
     user: {},
   },
   role: "user",
+  // users: [],
 };
 
 const slice = createSlice({
