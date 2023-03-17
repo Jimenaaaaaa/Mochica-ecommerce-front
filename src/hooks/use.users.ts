@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { LoginData, RegisterData } from "../models/models/user";
+import { LoginData } from "../models/models/user";
 import { loginSlice } from "../reducers/user.slice";
 
 import { UserRepo } from "../services/users.api.repo";
