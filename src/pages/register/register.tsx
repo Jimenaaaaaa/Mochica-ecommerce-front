@@ -1,23 +1,26 @@
-import { SyntheticEvent } from "react";
+import { SyntheticEvent, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useUsers } from "../../hooks/use.users";
 import { RegisterData } from "../../models/models/user";
 import { UserRepo } from "../../services/users.api.repo";
 import styles from "./register.module.scss";
 
 export default function Register() {
   const navigate = useNavigate();
-  const repo = new UserRepo();
+  const repo = useMemo(() => new UserRepo(), []);
+  const { register } = useUsers(repo);
   const handleSubmit = async (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
     const formElement = ev.currentTarget;
     const formData: RegisterData = {
-      name: (formElement[0] as HTMLFormElement).value,
-      lastName: (formElement[1] as HTMLFormElement).value,
-      email: (formElement[2] as HTMLFormElement).value,
-      password: (formElement[3] as HTMLFormElement).value,
+      name: (formElement.elements[0] as HTMLFormElement).value,
+      lastName: (formElement.elements[1] as HTMLFormElement).value,
+      email: (formElement.elements[2] as HTMLFormElement).value,
+      password: (formElement.elements[3] as HTMLFormElement).value,
     };
 
-    await repo.registerUser(formData);
+    register(formData);
+    formElement.reset();
     navigate("/login");
   };
 
@@ -26,10 +29,10 @@ export default function Register() {
       <div className={styles.enter}>
         <div className={styles.enter_options}>
           <Link to={`/login`}>
-            <div>Login</div>
+            <h2>Login</h2>
           </Link>
           <Link to={`/register`}>
-            <div>Register</div>
+            <h2>Register</h2>
           </Link>
         </div>
         <div className={styles.register}>
