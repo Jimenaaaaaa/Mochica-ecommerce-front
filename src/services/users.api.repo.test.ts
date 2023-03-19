@@ -45,7 +45,7 @@ describe("Given UserRepo class being instanced", () => {
           password: "test",
         }),
       });
-      const result = await mockRepoUsers.registerUser({
+      await mockRepoUsers.registerUser({
         name: "test",
         lastName: "test",
         email: "test",
