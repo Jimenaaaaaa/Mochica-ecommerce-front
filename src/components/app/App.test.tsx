@@ -1,15 +1,20 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { store } from "../../store/store";
+import { render } from "@testing-library/react";
+import { AppRouter } from "../app.router/app.router";
+import { Header } from "../header/header";
 import App from "./App";
 
-test("renders learn react link", () => {
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+jest.mock("../header/header");
+jest.mock("../app.router/app.router");
 
-  expect(screen.getByText(/prueba/i)).toBeInTheDocument();
+describe("Given the App component", () => {
+  describe("when it is rendered", () => {
+    test("then it should call Header", () => {
+      render(<App></App>);
+      expect(Header).toHaveBeenCalled();
+    });
+    test("then it should call AppRouter", () => {
+      render(<App></App>);
+      expect(AppRouter).toHaveBeenCalled();
+    });
+  });
 });
