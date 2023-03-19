@@ -22,15 +22,15 @@ describe("Given the userSlice with payload and initial state mocked", () => {
   });
 
   describe("When the login action is called", () => {
-    test("Then, if the initial state userLogged is empty, it should return the payload in the userLogged property of the state", () => {
+    test("Then, if the initial state userLogged values are empty, it should return the payload in the userLogged property of the state", () => {
       const mockLoginAction: PayloadAction<LoginData> = {
-        type: "user",
+        type: "user/loginSlice",
         payload: mockLoginData,
       };
       const result = usersReducer(mockInitialState, mockLoginAction);
       expect(result).toEqual({
         loggedUser: mockLoginData,
-        users: {},
+        role: "user",
       });
     });
   });
