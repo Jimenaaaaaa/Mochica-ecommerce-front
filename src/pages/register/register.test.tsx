@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-unnecessary-act */
 /* eslint-disable testing-library/no-render-in-setup */
 import { act, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
@@ -14,16 +15,15 @@ describe("Given Register component", () => {
   beforeEach(() => {
     act(() => {
       (useUsers as jest.Mock).mockReturnValue({ register: jest.fn() });
+      render(
+        <Provider store={store}>
+          <Router>
+            <Register></Register>
+          </Router>
+        </Provider>
+      );
     });
-    render(
-      <Provider store={store}>
-        <Router>
-          <Register></Register>
-        </Router>
-      </Provider>
-    );
   });
-
   describe("When the component is rendered", () => {
     test("Then the heading <h2> should be in the document", () => {
       const element = screen.getAllByRole("heading");
