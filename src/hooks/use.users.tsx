@@ -17,7 +17,7 @@ export function useUsers(repo: UserRepo) {
       dispatch(loginSlice(data));
     } catch (error) {
       // gestionar errores
-      console.error((error as Error).message);
+      // console.error((error as Error).message);
     }
   };
 
@@ -25,7 +25,7 @@ export function useUsers(repo: UserRepo) {
     try {
       await repo.registerUser(info);
     } catch (error) {
-      console.error((error as Error).message);
+      // console.error((error as Error).message);
     }
   };
 
