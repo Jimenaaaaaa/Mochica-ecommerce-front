@@ -1,0 +1,24 @@
+.enter {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 1rem;
+
+  &_options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+  }
+}
+
+.register {
+  padding: 1rem;
+  &_form {
+    display: flex;
+    flex-direction: column;
+    input {
+      margin: 0.5rem 0rem;
+    }
+  }
+}
