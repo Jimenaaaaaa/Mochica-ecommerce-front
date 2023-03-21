@@ -3,7 +3,7 @@ import {
   ProtoUser,
   RegisterData,
   User,
-} from "../models/models/user";
+} from "../../models/user";
 
 // Tengo que seguir rellenando el repo con el resto de metodos.
 

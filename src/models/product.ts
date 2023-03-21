@@ -1,10 +1,15 @@
 import { Artist } from "./artist";
 
-export type Product = {
+export type AddedProduct = {
   name: string;
   price: number;
   cone: number;
   size: number;
+  type: string;
   author: Artist;
-  img: [];
+  img: string;
+};
+
+export type Product = AddedProduct & {
+  id: string;
 };

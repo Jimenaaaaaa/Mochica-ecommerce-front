@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { LoginData, RegisterData } from "../models/models/user";
+import { LoginData, RegisterData } from "../models/user";
 import { loginSlice } from "../reducers/user.slice";
 
-import { UserRepo } from "../services/users.api.repo";
+import { UserRepo } from "../services/users/users.api.repo";
 
 import { AppDispatch, RootState } from "../store/store";
 

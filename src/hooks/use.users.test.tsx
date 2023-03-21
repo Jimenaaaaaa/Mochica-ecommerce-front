@@ -3,8 +3,8 @@
 import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
-import { User } from "../models/models/user";
-import { UserRepo } from "../services/users.api.repo";
+import { User } from "../models/user";
+import { UserRepo } from "../services/users/users.api.repo";
 
 import { store } from "../store/store";
 import { useUsers } from "./use.users";
