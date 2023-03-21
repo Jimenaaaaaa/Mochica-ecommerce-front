@@ -1,7 +1,7 @@
 import { SyntheticEvent, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUsers } from "../../hooks/use.users";
-import { RegisterData } from "../../models/user";
+import { RegisterData } from "../../models/user.js";
 import { UserRepo } from "../../services/users/users.api.repo";
 import styles from "./register.module.scss";
 

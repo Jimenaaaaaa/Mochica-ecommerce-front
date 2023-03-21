@@ -5,9 +5,9 @@ import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import { MemoryRouter as Router } from "react-router-dom";
 import Register from "./register";
-import { UserRepo } from "../../services/users/users.api.repo";
+import { UserRepo } from "../../services/users/users.api.repo.js";
 import userEvent from "@testing-library/user-event";
-import { useUsers } from "../../hooks/use.users";
+import { useUsers } from "../../hooks/use.users.js";
 
 jest.mock("../../hooks/use.users");
 

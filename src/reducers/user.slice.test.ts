@@ -1,6 +1,6 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../models/user";
-import { LoginData, State, usersReducer } from "./user.slice";
+import { User } from "../models/user.js";
+import { LoginData, State, usersReducer } from "./user.slice.js";
 
 describe("Given the userSlice with payload and initial state mocked", () => {
   let mockInitialState: State;

@@ -2,7 +2,7 @@
 import { SyntheticEvent, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../hooks/use.users";
-import { LoginData } from "../../models/user";
+import { LoginData } from "../../models/user.js";
 import { UserRepo } from "../../services/users/users.api.repo";
 import styles from "./login.module.scss";
 
