@@ -5,6 +5,7 @@ export type AddedProduct = {
   price: number;
   cone: number;
   size: number;
+  type: string;
   author: Artist;
   img: string;
 };
