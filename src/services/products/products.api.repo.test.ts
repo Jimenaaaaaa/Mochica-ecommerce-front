@@ -28,6 +28,18 @@ describe("Given the Product repo", () => {
     });
   });
 
+  describe("When the method getByTag is called", () => {
+    test("Then it should return an array of Products", async () => {
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: jest.fn().mockResolvedValue({ results: { name: "Product" } }),
+      });
+
+      const getOneProduct = await mockProductRepo.getByTag("1");
+      expect(getOneProduct).toEqual({ name: "Product" });
+    });
+  });
+
   describe("When getAll method fails", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
@@ -40,6 +52,14 @@ describe("Given the Product repo", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
       const getOneProduct = mockProductRepo.getById("1");
+      await expect(getOneProduct).rejects.toThrow();
+    });
+  });
+
+  describe("When getByTag method fails", () => {
+    test("Then it should throw an error", async () => {
+      global.fetch = jest.fn().mockResolvedValue("Error found");
+      const getOneProduct = mockProductRepo.getByTag("1");
       await expect(getOneProduct).rejects.toThrow();
     });
   });
