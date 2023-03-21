@@ -2,7 +2,7 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import { act, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { store } from "../../store/store.js";
+import { store } from "../../store/store";
 import { MemoryRouter as Router } from "react-router-dom";
 import Login from "./login";
 import { UserRepo } from "../../services/users/users.api.repo.js";
