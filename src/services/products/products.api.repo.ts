@@ -40,6 +40,6 @@ export class ProductsRepo {
     if (!resp.ok)
       throw new Error(`Error http: ${resp.status} ${resp.statusText}`);
     const data = await resp.json();
-    return data;
+    return data.results;
   }
 }
