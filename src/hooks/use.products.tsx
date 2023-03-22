@@ -43,7 +43,7 @@ export function useProducts(repo: ProductsRepo) {
   const productsGetByTag = async (tag: string) => {
     try {
       const data = await repo.getByTag(tag);
-      dispatch(getByTagProducts(data[0]));
+      dispatch(getByTagProducts(data));
     } catch (error) {
       // Lo voy a a;adir despues cuando gestione errores
       // console.error((error as Error).message);
