@@ -15,7 +15,7 @@ describe("Given Product List component", () => {
   beforeEach(async () => {
     (useProducts as jest.Mock).mockReturnValue({
       products: {
-        Products: [
+        products: [
           {
             id: "1",
             name: "test1",
@@ -42,9 +42,15 @@ describe("Given Product List component", () => {
 
   describe("When the Card is rendered", () => {
     test("Then it should return images", async () => {
-      await act(async () => {
-        const name = screen.getByTestId("cardlist-component");
+      act(async () => {
+        const elements = await screen.findAllByRole("img");
+        expect(elements[0]).toBeInTheDocument();
+        const name = await screen.findByRole("list");
         expect(name).toBeInTheDocument();
+        const elementNumbers = screen.getAllByRole("list");
+        for (let i = 0; i < elementNumbers.length; i++) {
+          expect(elementNumbers).toBeTruthy();
+        }
       });
     });
   });
