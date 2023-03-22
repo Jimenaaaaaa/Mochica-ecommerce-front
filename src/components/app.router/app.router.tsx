@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import Add from "../../pages/add/add";
 
 // Add later
 // const Home = lazy(() => import("../../components/home/home"));
@@ -11,6 +12,7 @@ const Artists = lazy(() => import("../../pages/artists/artists"));
 const About = lazy(() => import("../../pages/about/about"));
 const Profile = lazy(() => import("../../pages/profile/profile"));
 const Details = lazy(() => import("../../pages/details/details"));
+const Edit = lazy(() => import("../../pages/edit/edit"));
 
 export function AppRouter() {
   return (
@@ -25,6 +27,8 @@ export function AppRouter() {
         <Route path={"/about"} element={<About></About>}></Route>
         <Route path={"/profile"} element={<Profile></Profile>}></Route>
         <Route path={"/details/:id"} element={<Details></Details>}></Route>
+        <Route path={"/add"} element={<Add></Add>}></Route>
+        <Route path={"/edit/:id"} element={<Edit></Edit>}></Route>
       </Routes>
     </Suspense>
   );
