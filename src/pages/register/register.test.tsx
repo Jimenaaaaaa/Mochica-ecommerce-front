@@ -13,8 +13,8 @@ jest.mock("../../hooks/use.users");
 
 describe("Given Register component", () => {
   beforeEach(() => {
+    (useUsers as jest.Mock).mockReturnValue({ register: jest.fn() });
     act(() => {
-      (useUsers as jest.Mock).mockReturnValue({ register: jest.fn() });
       render(
         <Provider store={store}>
           <Router>
@@ -45,11 +45,13 @@ describe("Given Register component", () => {
     test("Then, the handleSubmit function should be called", async () => {
       const usersMockRepo = {} as unknown as UserRepo;
       const inputs = screen.getAllByRole("textbox");
-      await userEvent.type(inputs[0], "test");
-      await userEvent.type(inputs[1], "test");
-      await userEvent.type(inputs[2], "test");
-      const button = screen.getByRole("button");
-      await userEvent.click(button);
+      await act(async () => {
+        await userEvent.type(inputs[0], "test");
+        await userEvent.type(inputs[1], "test");
+        await userEvent.type(inputs[2], "test");
+        const button = screen.getByRole("button");
+        await userEvent.click(button);
+      });
       expect(useUsers(usersMockRepo).register).toHaveBeenCalledWith({
         name: "test",
         lastName: "test",

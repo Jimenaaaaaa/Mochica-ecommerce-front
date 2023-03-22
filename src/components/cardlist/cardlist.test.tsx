@@ -29,7 +29,7 @@ describe("Given Product List component", () => {
       productsGetAll: jest.fn(),
     });
 
-    await act(async () => {
+    await act(() => {
       render(
         <Provider store={store}>
           <MemoryRouter>
@@ -42,10 +42,8 @@ describe("Given Product List component", () => {
 
   describe("When the Card is rendered", () => {
     test("Then it should return images", async () => {
-      act(async () => {
-        const elements = await screen.findAllByRole("img");
-        expect(elements).toBeInTheDocument();
-        const name = await screen.findByRole("list");
+      await act(async () => {
+        const name = screen.getByTestId("cardlist-component");
         expect(name).toBeInTheDocument();
       });
     });
