@@ -31,7 +31,6 @@ export function Form() {
     } else {
       productPost(filledProduct as AddedProduct);
     }
-    // id ? productPatch(filledProduct) : productPost(filledProduct);
   };
 
   return (
