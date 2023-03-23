@@ -117,4 +117,3 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
     });
   });
 });
- 
