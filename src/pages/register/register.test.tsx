@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import { MemoryRouter as Router } from "react-router-dom";
 import Register from "./register";
-import { UserRepo } from "../../services/users/users.api.repo";
+import { UserRepo } from "../../services/users/users.api.repo.js";
 import userEvent from "@testing-library/user-event";
 import { useUsers } from "../../hooks/use.users";
 
@@ -13,8 +13,8 @@ jest.mock("../../hooks/use.users");
 
 describe("Given Register component", () => {
   beforeEach(() => {
+    (useUsers as jest.Mock).mockReturnValue({ register: jest.fn() });
     act(() => {
-      (useUsers as jest.Mock).mockReturnValue({ register: jest.fn() });
       render(
         <Provider store={store}>
           <Router>
@@ -45,11 +45,13 @@ describe("Given Register component", () => {
     test("Then, the handleSubmit function should be called", async () => {
       const usersMockRepo = {} as unknown as UserRepo;
       const inputs = screen.getAllByRole("textbox");
-      await userEvent.type(inputs[0], "test");
-      await userEvent.type(inputs[1], "test");
-      await userEvent.type(inputs[2], "test");
-      const button = screen.getByRole("button");
-      await userEvent.click(button);
+      await act(async () => {
+        await userEvent.type(inputs[0], "test");
+        await userEvent.type(inputs[1], "test");
+        await userEvent.type(inputs[2], "test");
+        const button = screen.getByRole("button");
+        await userEvent.click(button);
+      });
       expect(useUsers(usersMockRepo).register).toHaveBeenCalledWith({
         name: "test",
         lastName: "test",

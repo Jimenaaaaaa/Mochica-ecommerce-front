@@ -14,16 +14,17 @@ export default function Details() {
         <Link to={`/products`} relative="path">
           <button> Previous page</button>
         </Link>
-        <div>
-          {/* general container */}
-          <div>
-            {/* container de la foto y de los datos */}
+        <Link to={`/edit/${products.selectedProduct.id}`} relative="path">
+          <button> Edit </button>
+        </Link>
+        <button> Delete </button>
+
+        <div className={styles.container}>
+          <div className={styles.photo_data}>
             <div className={styles.main_image}>
-              {/* foto */}
               <img src={products.selectedProduct.img} alt="" />
             </div>
             <div>
-              {/* datos */}
               <div>
                 <h2>Nombre: {products.selectedProduct.name}</h2>
                 <p>Autor: Meterlo aqui</p>
@@ -37,7 +38,6 @@ export default function Details() {
               </div>
             </div>
           </div>
-          {/* maybe meterlko en el div  */}
         </div>
       </div>
     </>

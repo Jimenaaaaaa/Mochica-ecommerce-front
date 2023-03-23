@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "../models/user";
+import { User } from "../models/user.js";
 
 // Ver si sumar mas tarde:
 // type Status = "loading" | "idle" | "error";

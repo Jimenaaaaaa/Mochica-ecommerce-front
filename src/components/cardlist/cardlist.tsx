@@ -14,9 +14,9 @@ export default function Cardlist() {
   }, [productsGetAll]);
 
   return (
-    <div>
+    <div data-testid="cardlist-component">
       <ul className={styles.card_list}>
-        {products.Products.map((item: Product) => (
+        {products.products.map((item: Product) => (
           <Card product={item} key={item.id}></Card>
         ))}
       </ul>
