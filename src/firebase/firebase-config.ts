@@ -1,5 +1,7 @@
+import { config } from "../config.js";
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyDqHiWdf9oX1aKslZSmN-pbmgs0hUJUZVQ",
+  apiKey: config.apiKey,
   authDomain: "mochica-ceramics.firebaseapp.com",
   projectId: "mochica-ceramics",
   storageBucket: "mochica-ceramics.appspot.com",
