@@ -1,10 +1,11 @@
 import { SyntheticEvent, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useProducts } from "../../hooks/use.products";
 import { AddedProduct, Product } from "../../models/product";
 import { ProductsRepo } from "../../services/products/products.api.repo";
 
 export function Form() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const repo = useMemo(() => new ProductsRepo(), []);
   const { products, productPatch, productPost } = useProducts(repo);
@@ -16,7 +17,6 @@ export function Form() {
     const inputs = form.querySelectorAll("input");
 
     const filledProduct: Partial<Product> = {
-      img: inputs[0].value,
       name: inputs[1].value,
       price: inputs[2].value,
       type: inputs[3].value,
@@ -25,11 +25,14 @@ export function Form() {
       author: inputs[6].value,
     };
 
+    const img = inputs[0].files?.item(0);
+
     if (id) {
       filledProduct.id = product.id;
-      productPatch(filledProduct);
+      productPatch(filledProduct, img!, product.img);
+      navigate(`/details/${product.id}`);
     } else {
-      productPost(filledProduct as AddedProduct);
+      productPost(filledProduct as AddedProduct, img!);
     }
   };
 
@@ -38,35 +41,35 @@ export function Form() {
       <div className="form-line">
         <label htmlFor="">Image: </label>
         <input
-          type="text"
-          placeholder="https://www.example.png"
-          defaultValue={product.img}
-          required
+          type="file"
+          name="image"
+          id="image"
+          // defaultValue={id ? product.img : ""}
         />
       </div>
       <div className="form-line">
         <label htmlFor="">Name: </label>
-        <input type="text" defaultValue={product.name} required />
+        <input type="text" defaultValue={id ? product.name : ""} required />
       </div>
       <div className="form-line">
         <label htmlFor="">Price: </label>
-        <input type="text" defaultValue={product.price} required />
+        <input type="text" defaultValue={id ? product.price : ""} required />
       </div>
       <div className="form-line">
         <label htmlFor="">Type: </label>
-        <input type="text" defaultValue={product.type} required />
+        <input type="text" defaultValue={id ? product.type : ""} required />
       </div>
       <div className="form-line">
         <label htmlFor="">Cone: </label>
-        <input type="text" defaultValue={product.cone} required />
+        <input type="text" defaultValue={id ? product.cone : ""} required />
       </div>
       <div className="form-line">
         <label htmlFor="">Size: </label>
-        <input type="text" defaultValue={product.size} required />
+        <input type="text" defaultValue={id ? product.size : ""} required />
       </div>
       <div className="form-line">
         <label htmlFor="">Artist: </label>
-        <input type="text" defaultValue={product.author} required />
+        <input type="text" defaultValue={id ? product.author : ""} required />
       </div>
       <div className="button-div">
         <button type="submit">SUBMIT</button>
