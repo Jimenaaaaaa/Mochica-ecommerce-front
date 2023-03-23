@@ -8,38 +8,46 @@ export function NavBar() {
 
   return (
     <div className={styles.navbar}>
-      <ul>
-        <li>
-          <Link to={`/products`} relative="path">
-            <p>Products</p>
-          </Link>
-        </li>
-        <li>
-          <Link to={`/artists`} relative="path">
-            <p>Artists</p>
-          </Link>
-        </li>
-        <li>
-          <Link to={`/about`} relative="path">
-            <p>About</p>
-          </Link>
-        </li>
-        <li>
-          <Link to={`/profile`} relative="path">
-            <p>Profile</p>
-          </Link>
-        </li>
-        <li>
-          <Link to={`/cart`} relative="path">
-            <p>Cart</p>
-          </Link>
-        </li>
-        <li>
-          <Link to={`/add`} relative="path">
-            <p>Add</p>
-          </Link>
-        </li>
-      </ul>
+      <input type="checkbox" className={styles.toggler}></input>
+      <div className={styles.hamburguer}>
+        <div></div>
+      </div>
+      <div className={styles.menu}>
+        <div>
+          <ul>
+            <li>
+              <Link to={`/products`} relative="path">
+                <p>Products</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/artists`} relative="path">
+                <p>Artists</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/about`} relative="path">
+                <p>About</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/profile`} relative="path">
+                <p>Profile</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/cart`} relative="path">
+                <p>Cart</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={`/add`} relative="path">
+                <p>Add</p>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
