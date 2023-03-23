@@ -25,6 +25,7 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
       email: "test",
       password: "test",
     } as unknown as Product;
+    const mockFile = new File(["image"], "test.jpg");
 
     const mockId = "id";
 
@@ -43,8 +44,12 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
           <button onClick={() => productsGetAll()}>getAll</button>
           <button onClick={() => productsGetById(mockId)}>getById</button>
           <button onClick={() => productsGetByTag("tag")}>getByTag</button>
-          <button onClick={() => productPatch(mockInfo)}>patch</button>
-          <button onClick={() => productPost(mockInfo)}>post</button>
+          <button onClick={() => productPatch(mockInfo, mockFile, "image")}>
+            patch
+          </button>
+          <button onClick={() => productPost(mockInfo, mockFile)}>
+            post
+          </button>
           <button onClick={() => productDelete(mockId)}>delete</button>
         </>
       );
