@@ -6,7 +6,11 @@ import styles from "./details.module.scss";
 
 export default function Details() {
   const repo = useMemo(() => new ProductsRepo(), []);
-  const { products } = useProducts(repo);
+  const { products, productDelete } = useProducts(repo);
+
+  const handleDelete = () => {
+    productDelete(products.selectedProduct.id);
+  };
 
   return (
     <>
@@ -17,7 +21,9 @@ export default function Details() {
         <Link to={`/edit/${products.selectedProduct.id}`} relative="path">
           <button> Edit </button>
         </Link>
-        <button> Delete </button>
+        <Link to={`/products`} relative="path">
+          <button onClick={handleDelete}> Delete </button>
+        </Link>
 
         <div className={styles.container}>
           <div className={styles.photo_data}>
