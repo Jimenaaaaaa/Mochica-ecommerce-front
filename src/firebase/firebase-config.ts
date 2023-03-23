@@ -1,10 +1,8 @@
-import { config } from "../config";
-
 export const firebaseConfig = {
-  apiKey: config.apiKey,
+  apiKey: process.env.API_KEY,
   authDomain: "mochica-ceramics.firebaseapp.com",
   projectId: "mochica-ceramics",
   storageBucket: "mochica-ceramics.appspot.com",
-  messagingSenderId: "1016921635560",
-  appId: "1:1016921635560:web:055ff22094cddd42c4675d",
+  messagingSenderId: process.env.MSG_ID,
+  appId: process.env.APP_ID,
 };
