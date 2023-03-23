@@ -1,4 +1,4 @@
-import { getDownloadURL } from "firebase/storage/dist/storage";
+import { getDownloadURL } from "firebase/storage";
 import { newImage } from "./firebase-user";
 
 jest.mock("firebase/storage");

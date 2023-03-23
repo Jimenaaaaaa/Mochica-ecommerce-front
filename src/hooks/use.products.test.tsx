@@ -7,7 +7,7 @@ import { ProductsRepo } from "../services/products/products.api.repo";
 
 import { store } from "../store/store";
 import { useProducts } from "./use.products";
-
+jest.mock("../firebase/firebase-user");
 describe("Given the useProducts Custom Hook, an ApiRepo and a given component", () => {
   let mockInfo: Product;
 
@@ -47,9 +47,7 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
           <button onClick={() => productPatch(mockInfo, mockFile, "image")}>
             patch
           </button>
-          <button onClick={() => productPost(mockInfo, mockFile)}>
-            post
-          </button>
+          <button onClick={() => productPost(mockInfo, mockFile)}>post</button>
           <button onClick={() => productDelete(mockId)}>delete</button>
         </>
       );
