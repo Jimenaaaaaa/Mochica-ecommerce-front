@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { newImage } from "../firebase/firebase-user";
 import { AddedProduct, Product } from "../models/product";
 import {
   deleteProduct,
@@ -50,8 +51,13 @@ export function useProducts(repo: ProductsRepo) {
     }
   };
 
-  const productPatch = async (info: Partial<Product>) => {
+  const productPatch = async (
+    info: Partial<Product>,
+    img: File,
+    formImage: string
+  ) => {
     try {
+      img ? await newImage(info, img) : (info.img = formImage);
       const data = await repo.patch(info);
       dispatch(patchProduct(data));
     } catch (error) {
@@ -60,8 +66,10 @@ export function useProducts(repo: ProductsRepo) {
     }
   };
 
-  const productPost = async (product: AddedProduct) => {
+  const productPost = async (product: AddedProduct, img: File) => {
     try {
+      await newImage(product, img);
+      console.log(product);
       const data = await repo.post(product);
       dispatch(postProduct(data));
     } catch (error) {
