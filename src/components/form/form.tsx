@@ -15,14 +15,15 @@ export function Form() {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const inputs = form.querySelectorAll("input");
+    const select = form.querySelector("select");
 
     const filledProduct: Partial<Product> = {
       name: inputs[1].value,
       price: inputs[2].value,
-      type: inputs[3].value,
-      cone: inputs[4].value,
-      size: inputs[5].value,
-      author: inputs[6].value,
+      type: select!.value,
+      cone: inputs[3].value,
+      size: inputs[4].value,
+      author: inputs[5].value,
     };
 
     const img = inputs[0].files?.item(0);
@@ -56,8 +57,20 @@ export function Form() {
         <input type="text" defaultValue={id ? product.price : ""} required />
       </div>
       <div className="form-line">
-        <label htmlFor="">Type: </label>
-        <input type="text" defaultValue={id ? product.type : ""} required />
+        <label htmlFor="pet-select">Type:</label>
+
+        <select name="pets" id="pet-select">
+          <option value="">--Choose an option--</option>
+          <option value="mug">Mug</option>
+          <option value="vase">Vase</option>
+          <option value="glass">Glass</option>
+          <option value="plate">Plate</option>
+          <option value="bowl">Bowl</option>
+          <option value="jewerly">Jewerly</option>
+          <option value="other">Other</option>
+        </select>
+        {/* <label htmlFor="">Type: </label>
+        <input type="text" defaultValue={id ? product.type : ""} required /> */}
       </div>
       <div className="form-line">
         <label htmlFor="">Cone: </label>
