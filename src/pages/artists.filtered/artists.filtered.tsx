@@ -1,9 +1,10 @@
 import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { Card } from "../../../components/card/card";
-import { useProducts } from "../../../hooks/use.products";
-import { Product } from "../../../models/product";
-import { ProductsRepo } from "../../../services/products/products.api.repo";
+import { Card } from "../../components/card/card";
+import { useProducts } from "../../hooks/use.products";
+import { Product } from "../../models/product";
+import { ProductsRepo } from "../../services/products/products.api.repo";
+
 import styles from "./artists.filtered.module.scss";
 
 export default function ArtistsFiltered() {

@@ -20,7 +20,7 @@ const mockRepo: ProductsRepo = {
   url: "testing",
   getAll: jest.fn(),
   getById: jest.fn(),
-  getByTag: jest.fn(),
+  getByFilter: jest.fn(),
   patch: jest.fn(),
   post: jest.fn(),
   delete: jest.fn(),
