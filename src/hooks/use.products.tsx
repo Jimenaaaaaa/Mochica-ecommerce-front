@@ -5,7 +5,6 @@ import { AddedProduct, Product } from "../models/product";
 import {
   deleteProduct,
   getAllProducts,
-  // getByTagProducts,
   getPage,
   getPageLength,
   getProductById,
@@ -49,16 +48,6 @@ export function useProducts(repo: ProductsRepo) {
     [dispatch, repo]
   );
 
-  // const productsGetByTag = async (tag: string) => {
-  //   try {
-  //     const data = await repo.getByFilter(tag);
-  //     dispatch(getByTagProducts(data));
-  //   } catch (error) {
-  //     // Lo voy a a;adir despues cuando gestione errores
-  //     // console.error((error as Error).message);
-  //   }
-  // };
-
   const productPatch = async (
     info: Partial<Product>,
     img: File,
@@ -98,7 +87,6 @@ export function useProducts(repo: ProductsRepo) {
   return {
     products,
     productsGetAll,
-    // productsGetByTag,
     productsGetById,
     productPatch,
     productPost,
