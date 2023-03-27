@@ -1,6 +1,14 @@
 .card_list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 40px;
+  grid-gap: 20px;
   grid-auto-rows: minmax(100px, auto);
+  padding: 1.5rem;
+  list-style: none;
+
+  a,
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
 }

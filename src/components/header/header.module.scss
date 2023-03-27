@@ -3,6 +3,9 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   &_image {
-    height: 15rem;
+    height: 10rem;
+    width: 100vh;
+    object-fit: cover;
+    padding-top: 2rem;
   }
 }

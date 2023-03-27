@@ -1,8 +1,24 @@
 .card {
-  padding: 0;
-  border: 1px solid black;
+  padding: 0rem;
+
   img {
+    width: 150px;
     height: 150px;
     object-fit: cover;
+    border: 1px solid black;
+  }
+}
+
+.text {
+  align-items: left;
+  text-align: left;
+  &_title {
+    font-weight: bold;
+    font-family: sans-serif;
+  }
+  &_price {
+    font-weight: 100;
+    font-family: sans-serif;
+    color: rgb(128, 128, 128);
   }
 }
