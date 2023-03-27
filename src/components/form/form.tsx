@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useProducts } from "../../hooks/use.products";
 import { AddedProduct, Product } from "../../models/product";
 import { ProductsRepo } from "../../services/products/products.api.repo";
+import styles from "./form.module.scss";
 
 export function Form() {
   const navigate = useNavigate();
@@ -30,6 +31,9 @@ export function Form() {
 
     if (id) {
       filledProduct.id = product.id;
+      filledProduct.type
+        ? (filledProduct.type = select!.value)
+        : (filledProduct.type = product.type);
       productPatch(filledProduct, img!, product.img);
       navigate(`/details/${product.id}`);
     } else {
@@ -38,25 +42,26 @@ export function Form() {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit} id="form" data-testid="form">
-      <div className="form-line">
+    <form
+      className={styles.form}
+      action=""
+      onSubmit={handleSubmit}
+      id="form"
+      data-testid="form"
+    >
+      <div className={styles.form_line}>
         <label htmlFor="">Image: </label>
-        <input
-          type="file"
-          name="image"
-          id="image"
-          // defaultValue={id ? product.img : ""}
-        />
+        <input type="file" name="image" id="image" />
       </div>
-      <div className="form-line">
+      <div className={styles.form_line}>
         <label htmlFor="">Name: </label>
         <input type="text" defaultValue={id ? product.name : ""} required />
       </div>
-      <div className="form-line">
+      <div className={styles.form_line}>
         <label htmlFor="">Price: </label>
         <input type="text" defaultValue={id ? product.price : ""} required />
       </div>
-      <div className="form-line">
+      <div className={styles.form_line}>
         <label htmlFor="pet-select">Type:</label>
 
         <select name="pets" id="pet-select">
@@ -72,19 +77,19 @@ export function Form() {
         {/* <label htmlFor="">Type: </label>
         <input type="text" defaultValue={id ? product.type : ""} required /> */}
       </div>
-      <div className="form-line">
+      <div className={styles.form_line}>
         <label htmlFor="">Cone: </label>
         <input type="text" defaultValue={id ? product.cone : ""} required />
       </div>
-      <div className="form-line">
+      <div className={styles.form_line}>
         <label htmlFor="">Size: </label>
         <input type="text" defaultValue={id ? product.size : ""} required />
       </div>
-      <div className="form-line">
+      <div className={styles.form_line}>
         <label htmlFor="">Artist: </label>
         <input type="text" defaultValue={id ? product.author : ""} required />
       </div>
-      <div className="button-div">
+      <div className={styles.button_div}>
         <button type="submit">SUBMIT</button>
       </div>
     </form>
