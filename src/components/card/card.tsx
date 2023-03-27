@@ -21,8 +21,10 @@ export function Card({ product }: any) {
         <div>
           <img src={product.img} alt="" />
         </div>
-        <p>{product.name}</p>
-        <p>{product.price}</p>
+        <div className={styles.text}>
+          <p className={styles.text_title}>{product.name}</p>
+          <p className={styles.text_price}>{product.price}€</p>
+        </div>
       </li>
     </Link>
   );
