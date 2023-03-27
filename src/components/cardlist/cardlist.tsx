@@ -14,7 +14,7 @@ export default function Cardlist() {
   const page = products.currentPage;
 
   useEffect(() => {
-    productsGetAll(filter!, page);
+    productsGetAll(filter, page);
   }, [filter, page, productsGetAll]);
 
   const handleClick = (number: number) => {

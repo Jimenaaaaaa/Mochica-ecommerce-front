@@ -15,6 +15,7 @@ export default function Artists() {
   const repo = useMemo(() => new ProductsRepo(), []);
   const { products } = useProducts(repo);
 
+  // Add later in case products in an empty array
   // useEffect(() => {
   //   productsGetAll();
   // }, [productsGetAll]);
