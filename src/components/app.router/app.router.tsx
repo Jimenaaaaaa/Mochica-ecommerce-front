@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Add from "../../pages/add/add";
+import ArtistsFiltered from "../../pages/artists.filtered/artists.filtered";
 
 // Add later
 // const Home = lazy(() => import("../../components/home/home"));
@@ -21,8 +22,15 @@ export function AppRouter() {
         {/* <Route path="/" element={<Home></Home>}></Route> */}
         <Route path={"/login"} element={<Login></Login>}></Route>
         <Route path={"/register"} element={<Register></Register>}></Route>
-        <Route path={"/products"} element={<Products></Products>}></Route>
+        <Route
+          path={"/products/:filter"}
+          element={<Products></Products>}
+        ></Route>
         <Route path={"/artists"} element={<Artists></Artists>}></Route>
+        <Route
+          path={"/artists/:author"}
+          element={<ArtistsFiltered></ArtistsFiltered>}
+        ></Route>
         <Route path={"/cart"} element={<Cart></Cart>}></Route>
         <Route path={"/about"} element={<About></About>}></Route>
         <Route path={"/profile"} element={<Profile></Profile>}></Route>

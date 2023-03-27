@@ -1,15 +1,11 @@
-// .toggler {
-//   /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
-//   z-index: 2;
-//   height: 50px;
-//   width: 50px;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   cursor: pointer;
-//   opacity: 0;
-// }
-
+.submenu {
+  visibility: hidden;
+  margin-left: 5rem;
+  &_ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .toggler {
   margin: 1rem;
 }
@@ -81,7 +77,8 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
 // /* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
 
-.menu {
+.menu,
+.submenu {
   background: white;
   width: 0%;
 
@@ -98,7 +95,8 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
 // /* STYLING THE LIST :  */
 
-.menu > div > ul {
+.menu > div > ul,
+.submenu > div > ul {
   display: flex;
   flex-direction: column;
   // position: fixed;
@@ -110,12 +108,14 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
   visibility: hidden;
 }
 
-.menu > div > ul > li {
+.menu > div > ul > li,
+.submenu > div > ul > li {
   list-style: none;
   padding: 0.5rem;
 }
 
-.menu > div > ul > li > Link {
+.menu > div > ul > li > Link,
+.submenu > div > ul > li > Link {
   color: black;
   text-decoration: none;
   font-size: 2rem;
@@ -124,7 +124,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 
 // /* WHEN THE TOGGLER IS CHECKED, CHANGE THE VISIBILITY TO VISIBLE :  */
 
-.toggler:checked ~ .menu > div > ul {
+.toggler:checked ~ .menu > div > .menu_ul {
   transition: visibility 0.4s ease;
   transition-delay: 0.1s;
   visibility: visible;
@@ -135,18 +135,36 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 }
 .navbar {
   text-align: left;
+  background-color: rgb(171, 179, 255);
   ul {
     width: 100px;
     padding: 0rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     background-color: white;
     border: 1px solid black;
     align-items: flex-start;
     position: absolute;
+    list-style: none;
+    li {
+      list-style: none;
+    }
+    a,
+    a:visited {
+      text-decoration: none;
+      color: black;
+      font-family: sans-serif;
+    }
+    a:hover,
+    li:hover {
+      background-color: rgb(213, 212, 229);
+    }
   }
 }
-li {
-  list-style: none;
+
+.menu_products:hover {
+  .submenu {
+    visibility: visible;
+  }
 }

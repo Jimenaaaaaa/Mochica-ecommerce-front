@@ -7,14 +7,28 @@ export interface ProductRepoStructure {
   patch(info: Partial<Product>): Promise<Product>;
 }
 
+export type ResultsGet = {
+  slicedData: Product[];
+  length: number;
+  currentPage: number;
+};
+
 export class ProductsRepo {
   url: string;
   constructor() {
     this.url = "http://localhost:4500/products";
   }
 
-  async getAll(): Promise<Product[]> {
-    const resp = await fetch(this.url);
+  async getAll(number?: number, filter?: string): Promise<ResultsGet> {
+    let url;
+    let numberPage;
+
+    number ? (numberPage = number) : (numberPage = 1);
+
+    filter
+      ? (url = this.url + "?page=" + numberPage + "&filter=" + filter)
+      : (url = this.url + "?page=" + numberPage);
+    const resp = await fetch(url);
     if (!resp.ok)
       throw new Error(`Error http: ${resp.status} ${resp.statusText}`);
 
@@ -33,9 +47,8 @@ export class ProductsRepo {
     return data.results;
   }
 
-  async getByTag(tag: string): Promise<Product[]> {
-    // Mirar luego en el back como hacerlo
-    const url = this.url + "/tag/" + tag;
+  async getByFilter(filter: string): Promise<ResultsGet> {
+    const url = this.url + `/?filter=${filter}`;
     const resp = await fetch(url);
 
     if (!resp.ok)

@@ -36,7 +36,7 @@ describe("Given the Product repo", () => {
         json: jest.fn().mockResolvedValue({ results: { name: "Product" } }),
       });
 
-      const getOneProduct = await mockProductRepo.getByTag("1");
+      const getOneProduct = await mockProductRepo.getByFilter("1");
       expect(getOneProduct).toEqual({ name: "Product" });
     });
   });
@@ -101,7 +101,7 @@ describe("Given the Product repo", () => {
   describe("When getByTag method fails", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
-      const getOneProduct = mockProductRepo.getByTag("1");
+      const getOneProduct = mockProductRepo.getByFilter("1");
       await expect(getOneProduct).rejects.toThrow();
     });
   });
@@ -127,7 +127,7 @@ describe("Given the Product repo", () => {
   describe("When delete method fails", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
-      const patchProduct = mockProductRepo.delete('1');
+      const patchProduct = mockProductRepo.delete("1");
       await expect(patchProduct).rejects.toThrow();
     });
   });

@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import { useProducts } from "../../hooks/use.products";
 import { Product } from "../../models/product";
 import { store } from "../../store/store";
-import Artists from "./artists";
+import ArtistsFiltered from "./artists.filtered";
 
 jest.mock("../../hooks/use.products");
 describe("Given the Artists component", () => {
@@ -31,7 +31,7 @@ describe("Given the Artists component", () => {
       render(
         <Provider store={store}>
           <MemoryRouter>
-            <Artists></Artists>
+            <ArtistsFiltered></ArtistsFiltered>
           </MemoryRouter>
         </Provider>
       );
@@ -39,8 +39,8 @@ describe("Given the Artists component", () => {
   });
   describe("When it is rendered", () => {
     test("Then it should appear in the document", () => {
-      const title = screen.getByRole("heading");
-      expect(title).toBeInTheDocument();
+      const title = screen.getAllByRole("listitem");
+      expect(title[0]).toBeInTheDocument();
     });
   });
 });

@@ -12,6 +12,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
     mockInitialState = {
       selectedProduct: {} as Product,
       products: [],
+      currentPage: 1,
+      totalPages: 1,
     };
 
     mockProduct = {
@@ -33,6 +35,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
     mockStateFilled = {
       selectedProduct: mockProduct,
       products: mockProductArray,
+      currentPage: 1,
+      totalPages: 1,
     };
   });
 
@@ -46,6 +50,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       expect(result).toEqual({
         selectedProduct: {} as Product,
         products: mockProductArray,
+        currentPage: 1,
+        totalPages: 1,
       });
     });
   });
@@ -60,6 +66,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       expect(result).toEqual({
         selectedProduct: {} as Product,
         products: mockProductArray,
+        currentPage: 1,
+        totalPages: 1,
       });
     });
   });
@@ -74,6 +82,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       expect(result).toEqual({
         selectedProduct: mockProduct,
         products: [],
+        currentPage: 1,
+        totalPages: 1,
       });
     });
   });
@@ -97,6 +107,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
             name: "vasija",
           },
         ],
+        currentPage: 1,
+        totalPages: 1,
       });
     });
   });
@@ -111,6 +123,8 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       expect(result).toEqual({
         selectedProduct: {} as Product,
         products: [mockProduct],
+        currentPage: 1,
+        totalPages: 1,
       });
     });
   });
@@ -130,6 +144,39 @@ describe("Given the userSlice with payload and initial state mocked", () => {
             name: "vasija",
           },
         ],
+        currentPage: 1,
+        totalPages: 1,
+      });
+    });
+  });
+
+  describe("When the getPage is called", () => {
+    test("Then, if the payload is 2, the state.currentPage should be 2", () => {
+      const getPageAction: PayloadAction<number> = {
+        type: "product/getPage",
+        payload: 2,
+      };
+      const result = productsReducer(mockStateFilled, getPageAction);
+      expect(result).toEqual({
+        selectedProduct: mockProduct,
+        products: mockProductArray,
+        currentPage: 2,
+        totalPages: 1,
+      });
+    });
+  });
+  describe("When the getPageLength is called", () => {
+    test("Then, if the initial state products values are empty, it should return the payload in the products property of the state", () => {
+      const getPageLengthAction: PayloadAction<number> = {
+        type: "product/getPageLength",
+        payload: 2,
+      };
+      const result = productsReducer(mockStateFilled, getPageLengthAction);
+      expect(result).toEqual({
+        selectedProduct: mockProduct,
+        products: mockProductArray,
+        currentPage: 1,
+        totalPages: 2,
       });
     });
   });

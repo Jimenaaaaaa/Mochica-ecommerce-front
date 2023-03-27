@@ -4,17 +4,27 @@ import { Product } from "../models/product";
 export type ProductState = {
   selectedProduct: Product;
   products: Product[];
+  currentPage: number;
+  totalPages: number;
 };
 
 const initialState: ProductState = {
   selectedProduct: {} as Product,
   products: [],
+  currentPage: 1,
+  totalPages: 1,
 };
 
 export const ProductSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    getPage(state, action: PayloadAction<number>) {
+      state.currentPage = action.payload;
+    },
+    getPageLength(state, action: PayloadAction<number>) {
+      state.totalPages = action.payload;
+    },
     getAllProducts(state, action: PayloadAction<Product[]>) {
       state.products = action.payload;
     },
@@ -41,6 +51,8 @@ export const ProductSlice = createSlice({
 });
 
 export const {
+  getPage,
+  getPageLength,
   getAllProducts,
   getByTagProducts,
   getProductById,

@@ -4,9 +4,9 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { Product } from "../models/product";
 import { ProductsRepo } from "../services/products/products.api.repo";
-
 import { store } from "../store/store";
 import { useProducts } from "./use.products";
+
 jest.mock("../firebase/firebase-user");
 describe("Given the useProducts Custom Hook, an ApiRepo and a given component", () => {
   let mockInfo: Product;
@@ -32,7 +32,6 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
     const TestComponent = function () {
       const {
         productsGetAll,
-        productsGetByTag,
         productsGetById,
         productPatch,
         productPost,
@@ -43,7 +42,6 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
         <>
           <button onClick={() => productsGetAll()}>getAll</button>
           <button onClick={() => productsGetById(mockId)}>getById</button>
-          <button onClick={() => productsGetByTag("tag")}>getByTag</button>
           <button onClick={() => productPatch(mockInfo, mockFile, "image")}>
             patch
           </button>
@@ -68,7 +66,7 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
   });
 
   describe("When the TestComponent is showed and the GetAll button is clicked", () => {
-    test("Then, the productsGetAll method should be called", async () => {
+    test("Then, the productsGetAll method and the dispatch method should be called", async () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => {
         await fireEvent.click(elements[0]);
@@ -87,19 +85,13 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
     });
   });
 
-  describe("When the getByTag button is clicked", () => {
-    test("Then, the productsgetByTag function should have been called", async () => {
-      const elements = await screen.findAllByRole("button");
-      await fireEvent.click(elements[2]);
-      expect(mockRepo.getByTag).toHaveBeenCalled();
-    });
-  });
-
   describe("When the Patch button is clicked", () => {
     test("Then, the Patch function should have been called", async () => {
       const elements = await screen.findAllByRole("button");
-      await fireEvent.click(elements[3]);
-      expect(mockRepo.patch).toHaveBeenCalled();
+      await act(async () => {
+        await fireEvent.click(elements[2]);
+        expect(mockRepo.patch).toHaveBeenCalled();
+      });
     });
   });
 
@@ -107,15 +99,16 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
     test("Then, the Post method should be called", async () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => {
-        await fireEvent.click(elements[4]);
+        await fireEvent.click(elements[3]);
       });
       expect(mockRepo.post).toHaveBeenCalled();
     });
   });
+
   describe("When the delete button is clicked", () => {
     test("Then, the Delete function should have been called", async () => {
       const elements = await screen.findAllByRole("button");
-      await fireEvent.click(elements[5]);
+      await fireEvent.click(elements[4]);
       expect(mockRepo.delete).toHaveBeenCalled();
     });
   });

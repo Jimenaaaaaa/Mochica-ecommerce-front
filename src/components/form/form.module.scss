@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  margin: 2rem;
+  border: 1px solid black;
+  background-color: #f9f9f9;
+  font-family: sans-serif;
+  &_line {
+    padding: 0.3rem;
+    label {
+      padding-right: 0.5rem;
+    }
+  }
+  .button_div {
+    padding: 1rem 0rem;
+  }
+}

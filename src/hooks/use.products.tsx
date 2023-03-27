@@ -5,7 +5,8 @@ import { AddedProduct, Product } from "../models/product";
 import {
   deleteProduct,
   getAllProducts,
-  getByTagProducts,
+  getPage,
+  getPageLength,
   getProductById,
   patchProduct,
   postProduct,
@@ -18,15 +19,21 @@ export function useProducts(repo: ProductsRepo) {
   const products = useSelector((state: RootState) => state.products);
   const dispatch = useDispatch<AppDispatch>();
 
-  const productsGetAll = useCallback(async () => {
-    try {
-      const data = await repo.getAll();
-      dispatch(getAllProducts(data));
-    } catch (error) {
-      // Lo voy a a;adir despues cuando gestione errores
-      // console.error((error as Error).message)
-    }
-  }, [dispatch, repo]);
+  const productsGetAll = useCallback(
+    async (filter?: string, number?: number) => {
+      try {
+        if (!number) number = 1;
+        const data = await repo.getAll(number, filter);
+        dispatch(getAllProducts(data.slicedData));
+        dispatch(getPageLength(data.length));
+        dispatch(getPage(data.currentPage));
+      } catch (error) {
+        // Lo voy a a;adir despues cuando gestione errores
+        // console.error((error as Error).message)
+      }
+    },
+    [dispatch, repo]
+  );
 
   const productsGetById = useCallback(
     async (id: string) => {
@@ -40,16 +47,6 @@ export function useProducts(repo: ProductsRepo) {
     },
     [dispatch, repo]
   );
-
-  const productsGetByTag = async (tag: string) => {
-    try {
-      const data = await repo.getByTag(tag);
-      dispatch(getByTagProducts(data));
-    } catch (error) {
-      // Lo voy a a;adir despues cuando gestione errores
-      // console.error((error as Error).message);
-    }
-  };
 
   const productPatch = async (
     info: Partial<Product>,
@@ -69,7 +66,6 @@ export function useProducts(repo: ProductsRepo) {
   const productPost = async (product: AddedProduct, img: File) => {
     try {
       await newImage(product, img);
-      console.log(product);
       const data = await repo.post(product);
       dispatch(postProduct(data));
     } catch (error) {
@@ -91,7 +87,6 @@ export function useProducts(repo: ProductsRepo) {
   return {
     products,
     productsGetAll,
-    productsGetByTag,
     productsGetById,
     productPatch,
     productPost,

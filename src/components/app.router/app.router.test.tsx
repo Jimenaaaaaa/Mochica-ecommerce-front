@@ -13,7 +13,7 @@ describe("Given AppRouter component", () => {
           initialEntries={[
             "/register",
             "/login",
-            "/products",
+            "/products/:filter",
             "/artists",
             "/cart",
             "/about",
