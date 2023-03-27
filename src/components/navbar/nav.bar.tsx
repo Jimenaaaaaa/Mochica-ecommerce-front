@@ -12,11 +12,12 @@ export function NavBar() {
       <div className={styles.hamburguer}>
         <div></div>
       </div>
+
       <div className={styles.menu}>
         <div>
-          <ul>
-            <li>
-              <Link to={`/products`} relative="path">
+          <ul className={styles.menu_ul}>
+            <li className={styles.menu_poducts}>
+              <Link to={`/products/all`} relative="path">
                 <p>Products</p>
               </Link>
             </li>
@@ -43,6 +44,46 @@ export function NavBar() {
             <li>
               <Link to={`/add`} relative="path">
                 <p>Add</p>
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.submenu}>
+          <ul className={styles.submenu_ul}>
+            <li>
+              <Link to={`/products/mug`} relative="path">
+                Mug
+              </Link>
+            </li>
+            <li>
+              <Link to={`/products/vase`} relative="path">
+                Vase
+              </Link>
+            </li>
+            <li>
+              <Link to={`/products/glass`} relative="path">
+                Glass
+              </Link>
+            </li>
+            <li>
+              <Link to={`/products/plate`} relative="path">
+                Plate
+              </Link>
+            </li>
+            <li>
+              <Link to={`/products/bowl`} relative="path">
+                Bowl
+              </Link>
+            </li>
+            <li>
+              <Link to={`/products/jewerly`} relative="path">
+                Jewerly
+              </Link>
+            </li>
+            <li>
+              <Link to={`/products/other`} relative="path">
+                Other
               </Link>
             </li>
           </ul>
