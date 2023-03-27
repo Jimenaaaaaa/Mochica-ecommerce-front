@@ -13,13 +13,12 @@ export default function Cardlist() {
 
   const page = products.currentPage;
 
-  // HAcer la logica del front, tengo el valor en el url
-
   useEffect(() => {
     productsGetAll(filter!, page);
   }, [filter, page, productsGetAll]);
 
   const handleClick = (number: number) => {
+    debugger;
     productsGetAll(filter, number + products.currentPage);
   };
 
