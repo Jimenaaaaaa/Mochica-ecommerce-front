@@ -9,7 +9,7 @@ import { ProductsRepo } from "../../services/products/products.api.repo";
 import { store } from "../../store/store";
 import { Form } from "./form";
 
-const mockParams = { id: "1" };
+let mockParams = { id: "1" };
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: () => mockParams,
