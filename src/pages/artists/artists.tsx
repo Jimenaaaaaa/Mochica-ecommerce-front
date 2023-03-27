@@ -13,7 +13,7 @@ type Artist = {
 
 export default function Artists() {
   const repo = useMemo(() => new ProductsRepo(), []);
-  const { products} = useProducts(repo);
+  const { products } = useProducts(repo);
 
   // useEffect(() => {
   //   productsGetAll();
@@ -37,14 +37,14 @@ export default function Artists() {
   return (
     <div>
       <h1>Artists</h1>
-      <ul key={artists[0].id}>
+      <ul>
         {artists.map((item: Artist) => (
-          <Link to={`/artists/${item.author}`} relative="path">
-            <li key={item.id} className={styles.artist_list}>
+          <li key={item.id} className={styles.artist_list}>
+            <Link to={`/artists/${item.author}`} relative="path">
               <img src={item.img} alt={item.itemName} />
               <p>{item.author}</p>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
