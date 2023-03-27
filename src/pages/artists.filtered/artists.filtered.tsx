@@ -4,7 +4,6 @@ import { Card } from "../../components/card/card";
 import { useProducts } from "../../hooks/use.products";
 import { Product } from "../../models/product";
 import { ProductsRepo } from "../../services/products/products.api.repo";
-
 import styles from "./artists.filtered.module.scss";
 
 export default function ArtistsFiltered() {
@@ -22,7 +21,7 @@ export default function ArtistsFiltered() {
 
   return (
     <div data-testid="cardlist-component">
-      <ul className={styles.card_list}>
+      <ul className={styles.artist_list}>
         {selected.map((item: Product) => (
           <Card product={item} key={item.id}></Card>
         ))}
