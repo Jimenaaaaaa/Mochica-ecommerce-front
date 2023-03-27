@@ -54,7 +54,10 @@ export function useProducts(repo: ProductsRepo) {
     formImage: string
   ) => {
     try {
-      img ? await newImage(info, img) : (info.img = formImage);
+      await newImage(info, img);
+      if (!img) {
+        info.img = formImage;
+      }
       const data = await repo.patch(info);
       dispatch(patchProduct(data));
     } catch (error) {

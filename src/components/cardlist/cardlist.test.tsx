@@ -59,7 +59,7 @@ describe("Given Product List component", () => {
         const name = await screen.findByRole("list");
         expect(name).toBeInTheDocument();
         const elementNumbers = screen.getAllByRole("list");
-        for (let i = 0; i < elementNumbers.length; i++) {
+        for (let i of elementNumbers) {
           expect(elementNumbers).toBeTruthy();
         }
       });
