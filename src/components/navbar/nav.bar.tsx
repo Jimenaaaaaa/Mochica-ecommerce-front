@@ -1,10 +1,16 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useUsers } from "../../hooks/use.users";
+import { UserRepo } from "../../services/users/users.api.repo";
 import styles from "./nav.bar.module.scss";
 export function NavBar() {
   // Aqui tiene que leer los datos del usuario y ver si es admin o no, si es admin tiene que aparecer
   // La opcion add product
 
-  // Tengo que meterle los condicionales en el Profile de que si el usuario esta loggeado se cambie la pagina a la que redirige.
+  const repo = useMemo(() => new UserRepo(), []);
+  const { users } = useUsers(repo);
+
+  const person = users.loggedUser;
 
   return (
     <div className={styles.navbar}>
@@ -20,6 +26,45 @@ export function NavBar() {
               <Link to={`/products/all`} relative="path">
                 <p>Products</p>
               </Link>
+              <div className={styles.submenu}>
+                <ul className={styles.submenu_ul}>
+                  <li>
+                    <Link to={`/products/mug`} relative="path">
+                      Mug
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`/products/vase`} relative="path">
+                      Vase
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`/products/glass`} relative="path">
+                      Glass
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`/products/plate`} relative="path">
+                      Plate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`/products/bowl`} relative="path">
+                      Bowl
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`/products/jewerly`} relative="path">
+                      Jewerly
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={`/products/other`} relative="path">
+                      Other
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li>
               <Link to={`/artists`} relative="path">
@@ -32,24 +77,34 @@ export function NavBar() {
               </Link>
             </li>
             <li>
-              <Link to={`/profile`} relative="path">
-                <p>Profile</p>
-              </Link>
+              {person.token ? (
+                <Link to={`/profile`} relative="path">
+                  <p>Profile</p>
+                </Link>
+              ) : (
+                <Link to={`/login`} relative="path">
+                  <p>Profile</p>
+                </Link>
+              )}
             </li>
             <li>
-              <Link to={`/cart`} relative="path">
-                <p>Cart</p>
-              </Link>
+              {person.token && (
+                <Link to={`/cart`} relative="path">
+                  <p>Cart</p>
+                </Link>
+              )}
             </li>
             <li>
-              <Link to={`/add`} relative="path">
-                <p>Add</p>
-              </Link>
+              {person.token && (
+                <Link to={`/add`} relative="path">
+                  <p>Add</p>
+                </Link>
+              )}
             </li>
           </ul>
         </div>
 
-        <div className={styles.submenu}>
+        {/* <div className={styles.submenu}>
           <ul className={styles.submenu_ul}>
             <li>
               <Link to={`/products/mug`} relative="path">
@@ -87,7 +142,7 @@ export function NavBar() {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
