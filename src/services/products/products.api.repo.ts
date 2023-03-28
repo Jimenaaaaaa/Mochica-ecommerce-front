@@ -57,13 +57,14 @@ export class ProductsRepo {
     return data.results;
   }
 
-  async patch(info: Partial<Product>): Promise<Product> {
+  async patch(info: Partial<Product>, token: string): Promise<Product> {
     const url = this.url + "/" + info.id;
     const resp = await fetch(url, {
       method: "PATCH",
       body: JSON.stringify(info),
       headers: {
         "Content-type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
     if (!resp.ok)
@@ -72,13 +73,14 @@ export class ProductsRepo {
     return data;
   }
 
-  async post(product: AddedProduct): Promise<Product> {
+  async post(product: AddedProduct, token: string): Promise<Product> {
     const url = this.url + "/add";
     const resp = await fetch(url, {
       method: "POST",
       body: JSON.stringify(product),
       headers: {
         "Content-type": "application/json",
+        Authorization: "Bearer " + token,
       },
     });
     if (!resp.ok)
@@ -87,10 +89,14 @@ export class ProductsRepo {
     return data;
   }
 
-  async delete(id: string): Promise<void> {
+  async delete(id: string, token: string): Promise<void> {
     const url = this.url + "/delete/" + id;
     const resp = await fetch(url, {
       method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
     });
     if (!resp.ok)
       throw new Error("Error Http: " + resp.status + ". " + resp.statusText);
