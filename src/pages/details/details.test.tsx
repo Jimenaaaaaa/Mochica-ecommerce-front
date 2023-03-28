@@ -48,7 +48,9 @@ describe("Given Details page component", () => {
     test("Then productDelete should have been called", async () => {
       const element = screen.getAllByRole("button");
       expect(element[1]).toBeInTheDocument();
-      await userEvent.click(element[1]);
+      await act(async () => {
+        await userEvent.click(element[1]);
+      });
       expect(useProducts(mockRepo).productDelete).toHaveBeenCalled();
     });
   });
