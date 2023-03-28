@@ -10,7 +10,7 @@ describe("Given the userSlice with payload and initial state mocked", () => {
     mockInitialState = {
       loggedUser: {
         token: null,
-        user: {},
+        user: {} as User,
       },
       role: "user",
     };
