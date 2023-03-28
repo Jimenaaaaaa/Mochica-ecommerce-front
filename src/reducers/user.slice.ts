@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../models/product.js";
 import { User } from "../models/user.js";
 
 // Ver si sumar mas tarde:
@@ -18,23 +19,19 @@ export type LoginData = {
 };
 
 export type State = {
-  loggedUser:
-    | {
-        token: string | null;
-        user: User;
-      }
-    | {};
+  loggedUser: {
+    token: string | null;
+    user: User;
+  };
   role: string | null;
-  // users: User[];
 };
 
 const initialState: State = {
   loggedUser: {
     token: null,
-    user: {},
+    user: {} as User,
   },
   role: "user",
-  // users: [],
 };
 
 const slice = createSlice({
@@ -42,14 +39,26 @@ const slice = createSlice({
   initialState,
   reducers: {
     loginSlice(state, action: PayloadAction<LoginData>) {
-      // Revisar el payload
       state.loggedUser = {
         token: action.payload.token,
         user: action.payload.user,
       };
     },
+    addToCartSlice(state, action: PayloadAction<Product>) {
+      const { loggedUser } = state;
+      const { user } = loggedUser;
+      const { cart } = user;
+
+      state.loggedUser = {
+        ...loggedUser,
+        user: {
+          ...user,
+          cart: [...cart, action.payload],
+        },
+      };
+    },
   },
 });
 
-export const { loginSlice } = slice.actions;
+export const { loginSlice, addToCartSlice } = slice.actions;
 export const usersReducer = slice.reducer;
