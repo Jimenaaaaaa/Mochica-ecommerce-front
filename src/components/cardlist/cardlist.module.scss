@@ -5,10 +5,24 @@
   grid-auto-rows: minmax(100px, auto);
   padding: 1.5rem;
   list-style: none;
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    padding: 3rem 8rem 8rem 8rem;
+  }
 
   a,
   a:visited {
     text-decoration: none;
     color: black;
   }
+}
+
+.card_pages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0rem 2rem;
+  font-family: sans-serif;
+  color: grey;
 }

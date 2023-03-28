@@ -1,9 +1,14 @@
 .submenu {
-  visibility: hidden;
+  visibility: none;
+  position: absolute;
   margin-left: 5rem;
+  top: -0.05rem;
   &_ul {
     display: flex;
     flex-direction: column;
+    li {
+      padding: 0.2rem 1rem;
+    }
   }
 }
 .toggler {
