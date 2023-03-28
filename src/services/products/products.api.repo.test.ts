@@ -48,10 +48,13 @@ describe("Given the Product repo", () => {
         json: jest.fn().mockResolvedValue({ results: { name: "Product" } }),
       });
 
-      const patchProduct = await mockProductRepo.patch({
-        name: "Product",
-        id: "1",
-      });
+      const patchProduct = await mockProductRepo.patch(
+        {
+          name: "Product",
+          id: "1",
+        },
+        "token"
+      );
       expect(patchProduct).toEqual({ results: { name: "Product" } });
     });
   });
@@ -63,9 +66,12 @@ describe("Given the Product repo", () => {
         json: jest.fn().mockResolvedValue({ results: { name: "Product" } }),
       });
 
-      const addProduct = await mockProductRepo.post({
-        name: "Product",
-      } as AddedProduct);
+      const addProduct = await mockProductRepo.post(
+        {
+          name: "Product",
+        } as AddedProduct,
+        "token"
+      );
       expect(addProduct).toEqual({ results: { name: "Product" } });
     });
   });
@@ -77,7 +83,7 @@ describe("Given the Product repo", () => {
         json: jest.fn().mockResolvedValue(undefined),
       });
 
-      const deleteProduct = await mockProductRepo.delete("1");
+      const deleteProduct = await mockProductRepo.delete("1", "token");
       expect(deleteProduct).toEqual(undefined);
     });
   });
@@ -109,7 +115,7 @@ describe("Given the Product repo", () => {
   describe("When patch method fails", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
-      const patchProduct = mockProductRepo.patch({ name: "Product" });
+      const patchProduct = mockProductRepo.patch({ name: "Product" }, "token");
       await expect(patchProduct).rejects.toThrow();
     });
   });
@@ -117,9 +123,12 @@ describe("Given the Product repo", () => {
   describe("When post method fails", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
-      const patchProduct = mockProductRepo.post({
-        name: "Product",
-      } as AddedProduct);
+      const patchProduct = mockProductRepo.post(
+        {
+          name: "Product",
+        } as AddedProduct,
+        "token"
+      );
       await expect(patchProduct).rejects.toThrow();
     });
   });
@@ -127,7 +136,7 @@ describe("Given the Product repo", () => {
   describe("When delete method fails", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error found");
-      const patchProduct = mockProductRepo.delete("1");
+      const patchProduct = mockProductRepo.delete("1", "token");
       await expect(patchProduct).rejects.toThrow();
     });
   });
