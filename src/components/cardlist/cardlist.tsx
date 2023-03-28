@@ -12,47 +12,50 @@ export default function Cardlist() {
   const { products, productsGetAll } = useProducts(repo);
 
   const page = products.currentPage;
+  const totalPages = products.totalPages;
 
   useEffect(() => {
     productsGetAll(filter, page);
   }, [filter, page, productsGetAll]);
 
   const handleClick = (number: number) => {
-    debugger;
     productsGetAll(filter, number + products.currentPage);
   };
 
   return (
     <div data-testid="cardlist-component">
-      {filter !== "all" && <div>{filter}</div>}
+      <div className={styles.card_pages}>
+        {page !== 1 ? (
+          <p
+            className={styles.button_prev}
+            onClick={() => {
+              handleClick(-1);
+            }}
+          >
+            previous page
+          </p>
+        ) : (
+          <div></div>
+        )}
+
+        {page < totalPages ? (
+          <p
+            className={styles.button_next}
+            onClick={() => {
+              handleClick(1);
+            }}
+          >
+            next page
+          </p>
+        ) : (
+          <div></div>
+        )}
+      </div>
       <ul className={styles.card_list}>
         {products.products.map((item: Product) => (
           <Card product={item} key={item.id}></Card>
         ))}
       </ul>
-      <div>
-        {page !== 1 ? (
-          <button
-            className="style.productsButtonsPrev"
-            onClick={() => {
-              handleClick(-1);
-            }}
-          >
-            -
-          </button>
-        ) : (
-          <div></div>
-        )}
-
-        <button
-          className=""
-          onClick={() => {
-            handleClick(1);
-          }}
-        >
-          +
-        </button>
-      </div>
     </div>
   );
 }
