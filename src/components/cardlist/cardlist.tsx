@@ -27,6 +27,7 @@ export default function Cardlist() {
       <div className={styles.card_pages}>
         {page !== 1 ? (
           <p
+            data-testid="button1"
             className={styles.button_prev}
             onClick={() => {
               handleClick(-1);
@@ -40,6 +41,7 @@ export default function Cardlist() {
 
         {page < totalPages ? (
           <p
+            data-testid="button2"
             className={styles.button_next}
             onClick={() => {
               handleClick(1);
@@ -51,11 +53,13 @@ export default function Cardlist() {
           <div></div>
         )}
       </div>
+      {/* <div className={styles.card_container}> */}
       <ul className={styles.card_list}>
         {products.products.map((item: Product) => (
           <Card product={item} key={item.id}></Card>
         ))}
       </ul>
+      {/* </div> */}
     </div>
   );
 }
