@@ -2,17 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../models/product.js";
 import { User } from "../models/user.js";
 
-// Ver si sumar mas tarde:
-// type Status = "loading" | "idle" | "error";
-// type State = {
-//   userLoggingStatus: Status;
-//   userLogged: {
-//     token: string;
-//     user: User;
-//   } | null;
-//   user: User;
-// };
-
 export type LoginData = {
   token: string;
   user: User;

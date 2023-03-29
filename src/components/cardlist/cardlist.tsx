@@ -53,13 +53,11 @@ export default function Cardlist() {
           <div></div>
         )}
       </div>
-      {/* <div className={styles.card_container}> */}
       <ul className={styles.card_list}>
         {products.products.map((item: Product) => (
           <Card product={item} key={item.id}></Card>
         ))}
       </ul>
-      {/* </div> */}
     </div>
   );
 }

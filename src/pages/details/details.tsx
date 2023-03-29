@@ -16,7 +16,6 @@ export default function Details() {
   const person = users.loggedUser;
 
   const handleDelete = () => {
-    console.log("entro aqui");
     productDelete(products.selectedProduct.id, users.loggedUser.token!);
   };
 

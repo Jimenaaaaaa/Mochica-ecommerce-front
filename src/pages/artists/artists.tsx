@@ -15,11 +15,6 @@ export default function Artists() {
   const repo = useMemo(() => new ProductsRepo(), []);
   const { products } = useProducts(repo);
 
-  // Add later in case products in an empty array
-  // useEffect(() => {
-  //   productsGetAll();
-  // }, [productsGetAll]);
-
   const artists = [] as any;
   const repeated = {} as any;
 
@@ -37,13 +32,13 @@ export default function Artists() {
 
   return (
     <div>
-      <h1>Artists</h1>
-      <ul>
+      <h1 className={styles.title}>Artists</h1>
+      <ul className={styles.artist_ul}>
         {artists.map((item: Artist) => (
           <li key={item.id} className={styles.artist_list}>
             <Link to={`/artists/${item.author}`} relative="path">
               <img src={item.img} alt={item.itemName} />
-              <p>{item.author}</p>
+              <p className={styles.author}>{item.author}</p>
             </Link>
           </li>
         ))}
