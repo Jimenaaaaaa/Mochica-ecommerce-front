@@ -70,7 +70,7 @@ export class ProductsRepo {
     if (!resp.ok)
       throw new Error("Error Http: " + resp.status + ". " + resp.statusText);
     const data = await resp.json();
-    return data;
+    return data.results;
   }
 
   async post(product: AddedProduct, token: string): Promise<Product> {
