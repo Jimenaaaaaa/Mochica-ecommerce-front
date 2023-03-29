@@ -4,6 +4,8 @@ import { AppRouter } from "./app.router";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
+import { User } from "../../models/user";
+import { useUsers } from "../../hooks/use.users";
 
 describe("Given AppRouter component", () => {
   const prepareTestFunction = (number: number) => {
@@ -15,7 +17,6 @@ describe("Given AppRouter component", () => {
             "/login",
             "/products/:filter",
             "/artists",
-            "/cart",
             "/about",
             "/profile",
           ]}
@@ -58,23 +59,17 @@ describe("Given AppRouter component", () => {
       expect(element).toBeInTheDocument();
     });
   });
-  describe('When it is render and the path is "/cart"', () => {
-    test('Then, the "Artist" title should be in the document', async () => {
-      await waitFor(async () => prepareTestFunction(4));
-      const element = await screen.findByRole("heading");
-      expect(element).toBeInTheDocument();
-    });
-  });
+
   describe('When it is render and the path is "/about"', () => {
     test('Then, the "Artist" title should be in the document', async () => {
-      await waitFor(async () => prepareTestFunction(5));
-      const element = await screen.findByRole("heading");
+      await waitFor(async () => prepareTestFunction(4));
+      const element = await screen.findByRole("img");
       expect(element).toBeInTheDocument();
     });
   });
   describe('When it is render and the path is "/profile"', () => {
     test('Then, the "Artist" title should be in the document', async () => {
-      await waitFor(async () => prepareTestFunction(6));
+      await waitFor(async () => prepareTestFunction(5));
       const element = await screen.findByRole("heading");
       expect(element).toBeInTheDocument();
     });
