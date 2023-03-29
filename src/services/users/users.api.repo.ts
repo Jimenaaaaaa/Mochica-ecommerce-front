@@ -1,10 +1,9 @@
 import { LoginData, ProtoUser, RegisterData, User } from "../../models/user";
 
-
 export interface UserRepoStructure {
   loadUser(): Promise<User>;
   loginUser(user: LoginData): Promise<LoginData>;
-  registerUser(user: ProtoUser): Promise<User>; 
+  registerUser(user: ProtoUser): Promise<User>;
 }
 
 export class UserRepo {
@@ -45,4 +44,5 @@ export class UserRepo {
 
     const data = await resp.json();
     return data.results;
+  }
 }
