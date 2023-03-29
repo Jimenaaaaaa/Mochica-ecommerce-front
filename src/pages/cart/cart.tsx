@@ -22,15 +22,19 @@ export default function Cart() {
           <p>Price</p>
         </div>
         <ul className={styles.products}>
-          {cart.map((item) => (
-            <li key={item.id} className={styles.product}>
-              <div>
-                <img src={item.img} alt={item.name} />
-              </div>
-              <p>{item.name}</p>
-              <p>{item.price}€</p>
-            </li>
-          ))}
+          {cart ? (
+            cart.map((item) => (
+              <li key={item.id} className={styles.product}>
+                <div>
+                  <img src={item.img} alt={item.name} />
+                </div>
+                <p>{item.name}</p>
+                <p>{item.price}€</p>
+              </li>
+            ))
+          ) : (
+            <p> No hay elementos en el carrito</p>
+          )}
         </ul>
         <div className={styles.price}>
           <p className={styles.price_total}>Total price</p>
