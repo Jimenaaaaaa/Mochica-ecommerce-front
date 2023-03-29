@@ -13,15 +13,10 @@ export default function Details() {
   const { products, productDelete } = useProducts(repo);
   const { users, addToCart } = useUsers(repoUser);
 
-  // Ver como a;adir que ese cambie todo caundo voy a edit
-  // useEffect(() => {}, [products.products]);
-
   const person = users.loggedUser;
 
-  // Ponerle lo de que si esta en el carriton se actualice el boton
-  // let isAdded = false;
-
   const handleDelete = () => {
+    console.log("entro aqui");
     productDelete(products.selectedProduct.id, users.loggedUser.token!);
   };
 
