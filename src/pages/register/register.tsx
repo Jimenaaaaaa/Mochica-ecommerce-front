@@ -28,24 +28,24 @@ export default function Register() {
     <>
       <div className={styles.enter}>
         <div className={styles.enter_options}>
-          <Link to={`/login`}>
-            <h2>Login</h2>
-          </Link>
-          <Link to={`/register`}>
-            <h2>Register</h2>
-          </Link>
+          <div className={styles.enter_login}>
+            <Link to={`/login`}>
+              <h2>LOGIN</h2>
+            </Link>
+          </div>
+          <div className={styles.enter_register}>
+            <Link to={`/register`}>
+              <h2>REGISTER</h2>
+            </Link>
+          </div>
         </div>
-        <div className={styles.register}>
-          <form
-            action=""
-            className={styles.register_form}
-            onSubmit={handleSubmit}
-          >
+        <div className={styles.login}>
+          <form action="" className={styles.login_form} onSubmit={handleSubmit}>
             <input type="text" placeholder="NAME" required />
             <input type="text" placeholder="LASTNAME" required />
             <input type="text" placeholder="EMAIL" required />
             <input type="password" placeholder="PASSWORD" required />
-            <button>Submit</button>
+            <button className={styles.submit}>SUBMIT</button>
           </form>
         </div>
       </div>
