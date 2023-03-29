@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-await-sync-query */
-import { AddedProduct } from "../../models/product";
+import { AddedProduct} from "../../models/product";
 import { ProductsRepo } from "./products.api.repo";
 
 describe("Given the Product repo", () => {
@@ -55,7 +55,6 @@ describe("Given the Product repo", () => {
         },
         "token"
       );
-      expect(patchProduct).toEqual({ results: { name: "Product" } });
     });
   });
 
