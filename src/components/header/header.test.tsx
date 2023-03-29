@@ -15,8 +15,8 @@ describe("Given the Header component", () => {
           </MemoryRouter>
         </Provider>
       );
-      const image = screen.getByRole("img");
-      expect(image).toBeInTheDocument();
+      const image = screen.getAllByRole("img");
+      expect(image[0]).toBeInTheDocument();
     });
   });
 });
