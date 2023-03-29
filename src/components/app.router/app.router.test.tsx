@@ -4,8 +4,6 @@ import { AppRouter } from "./app.router";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
-import { User } from "../../models/user";
-import { useUsers } from "../../hooks/use.users";
 
 describe("Given AppRouter component", () => {
   const prepareTestFunction = (number: number) => {
