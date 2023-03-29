@@ -1,0 +1,145 @@
+.navbar {
+  background-color: rgb(145, 153, 227);
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+  display: flex;
+  padding: 0.4rem;
+
+  align-items: flex-start;
+}
+
+.submenu2 {
+  top: 3.5rem;
+  display: none;
+  visibility: none;
+  position: absolute;
+  background-color: rgb(99, 108, 187);
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  width: 100%;
+  li {
+    list-style: none;
+    color: white;
+    a,
+    a:visited {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+    }
+  }
+  li:hover {
+    background-color: rgb(78, 87, 167);
+  }
+
+  // visibility: none;
+}
+
+.menu_ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.655rem;
+  list-style: none;
+  visibility: hidden;
+  position: absolute;
+  left: 0.000001rem;
+  top: 2.8rem;
+  border: 1px solid black;
+  background-color: #764335;
+  padding: 0.8rem 1rem 0.8rem 1rem;
+  background-color: rgb(145, 153, 227);
+
+  .submenu_ul {
+    display: none;
+    li:hover {
+      background-color: rgb(78, 86, 154);
+    }
+  }
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: space-around;
+    visibility: initial;
+    border: none;
+    text-align: center;
+    position: absolute;
+    border-bottom: 1px solid black;
+    top: 0rem;
+    width: 100%;
+    gap: 1.4rem;
+  }
+  a {
+    color: whitesmoke;
+    text-decoration: none;
+    text-align: center;
+  }
+  li {
+    list-style: none;
+  }
+  li:hover {
+    background-color: rgb(103, 110, 182);
+  }
+}
+nav:hover {
+  .menu_ul {
+    visibility: visible;
+  }
+}
+.burgermenu {
+  padding: 0.5;
+  height: 2rem;
+  width: 2.2rem;
+  display: initial;
+  height: 2rem;
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+li:hover .submenu {
+  display: block;
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+nav:hover .submenu2 {
+  display: none;
+  @media (min-width: 640px) {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    visibility: visible;
+  }
+}
+
+.menu_poducts:hover .submenu_ul {
+  display: block;
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+.menu_poducts:hover .submenu_ul {
+  display: block;
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+// .menu_products:hover {
+//   .submenu_ul {
+//     display: initial;
+//   }
+// }
+
+@media (min-width: 640px) {
+  .submenu,
+  .submenu_ul {
+    display: none;
+  }
+}
