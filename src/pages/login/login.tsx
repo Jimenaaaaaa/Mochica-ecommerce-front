@@ -23,14 +23,14 @@ export default function Login() {
 
   return (
     <>
-      <div className={styles.enter}>
-        <div className={styles.enter_options}>
-          <div className={styles.enter_login}>
+      <div className={styles.form}>
+        <div className={styles.form_options}>
+          <div className={styles.form_login}>
             <Link to={`/login`}>
               <h2>LOGIN</h2>
             </Link>
           </div>
-          <div className={styles.enter_register}>
+          <div className={styles.form_register}>
             <Link to={`/register`}>
               <h2>REGISTER</h2>
             </Link>

@@ -79,7 +79,7 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
     });
   });
 
-  describe("When the TestComponent is rendered and the getById button is clicked", () => {
+  describe("When we render the TestComponent and we click the getById button", () => {
     test("Then, the productsgetById function should be called", async () => {
       const buttons = await screen.findAllByRole("button");
       await act(async () => {
