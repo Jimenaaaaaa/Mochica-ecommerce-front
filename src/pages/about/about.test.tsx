@@ -5,7 +5,7 @@ describe("Given the Header component", () => {
   describe("When it is rendered", () => {
     test("Then it should appear in the document", () => {
       render(<About></About>);
-      const title = screen.getByRole("heading");
+      const title = screen.getByRole("img");
       expect(title).toBeInTheDocument();
     });
   });

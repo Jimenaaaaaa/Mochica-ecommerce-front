@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Product } from "../models/product";
 import { LoginData, RegisterData } from "../models/user";
-import { loginSlice } from "../reducers/user.slice";
+import { addToCartSlice, loginSlice } from "../reducers/user.slice";
 
 import { UserRepo } from "../services/users/users.api.repo";
 
@@ -29,10 +30,19 @@ export function useUsers(repo: UserRepo) {
     }
   };
 
+  const addToCart = async (product: Product) => {
+    try {
+      dispatch(addToCartSlice(product));
+    } catch (error) {
+      // console.error((error as Error).message);
+    }
+  };
+
   return {
     users,
     login,
     register,
+    addToCart,
   };
 }
 

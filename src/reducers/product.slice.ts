@@ -38,6 +38,8 @@ export const ProductSlice = createSlice({
       state.products = state.products.map((item) =>
         item.id === action.payload.id ? action.payload : item
       );
+
+      state.selectedProduct = action.payload;
     },
     postProduct(state, action: PayloadAction<Product>) {
       state.products = [...state.products, action.payload];

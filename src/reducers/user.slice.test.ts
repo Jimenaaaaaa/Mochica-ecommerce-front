@@ -1,4 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../models/product.js";
 import { User } from "../models/user.js";
 import { LoginData, State, usersReducer } from "./user.slice";
 
@@ -10,7 +11,9 @@ describe("Given the userSlice with payload and initial state mocked", () => {
     mockInitialState = {
       loggedUser: {
         token: null,
-        user: {},
+        user: {
+          cart: [{}],
+        } as User,
       },
       role: "user",
     };
@@ -30,6 +33,25 @@ describe("Given the userSlice with payload and initial state mocked", () => {
       const result = usersReducer(mockInitialState, mockLoginAction);
       expect(result).toEqual({
         loggedUser: mockLoginData,
+        role: "user",
+      });
+    });
+  });
+
+  describe("When the add/to/cart action is called", () => {
+    test("Then, if the initial state is an empty array, te cart should have an array with the payload and another object", () => {
+      const mockAddToCartAction: PayloadAction<Product> = {
+        type: "user/addToCartSlice",
+        payload: {} as Product,
+      };
+      const result = usersReducer(mockInitialState, mockAddToCartAction);
+      expect(result).toEqual({
+        loggedUser: {
+          token: null,
+          user: {
+            cart: [{}, {}],
+          },
+        },
         role: "user",
       });
     });

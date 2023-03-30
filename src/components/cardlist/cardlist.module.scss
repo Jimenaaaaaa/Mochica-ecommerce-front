@@ -5,10 +5,34 @@
   grid-auto-rows: minmax(100px, auto);
   padding: 1.5rem;
   list-style: none;
+  @media (min-width: 530px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    padding: 3rem 8rem 8rem 14rem;
+  }
 
   a,
   a:visited {
     text-decoration: none;
     color: black;
+  }
+}
+
+.card_pages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0rem 2rem;
+  font-family: sans-serif;
+  color: grey;
+
+  @media (min-width: 900px) {
+    font-size: 20px;
+    padding-right: 8rem;
   }
 }

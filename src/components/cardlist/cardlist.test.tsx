@@ -69,11 +69,9 @@ describe("Given Product List component", () => {
   describe("When the user clicks on the pagination buttons", () => {
     test("Then it should call the productsGetAll method", async () => {
       await act(async () => {
-        const buttons = screen.getAllByRole("button");
-        expect(buttons[0]).toBeInTheDocument();
-        expect(buttons[1]).toBeInTheDocument();
-        await userEvent.click(buttons[0]);
-        await userEvent.click(buttons[1]);
+        const button1 = screen.getByTestId("button1");
+        expect(button1).toBeInTheDocument();
+        await userEvent.click(button1);
         expect(useProducts(mockRepo).productsGetAll).toHaveBeenCalled();
       });
     });

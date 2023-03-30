@@ -51,14 +51,15 @@ export function useProducts(repo: ProductsRepo) {
   const productPatch = async (
     info: Partial<Product>,
     img: File,
-    formImage: string
+    formImage: string,
+    token: string
   ) => {
     try {
       await newImage(info, img);
       if (!img) {
         info.img = formImage;
       }
-      const data = await repo.patch(info);
+      const data = await repo.patch(info, token);
       dispatch(patchProduct(data));
     } catch (error) {
       // Lo voy a a;adir despues cuando gestione errores
@@ -66,10 +67,14 @@ export function useProducts(repo: ProductsRepo) {
     }
   };
 
-  const productPost = async (product: AddedProduct, img: File) => {
+  const productPost = async (
+    product: AddedProduct,
+    img: File,
+    token: string
+  ) => {
     try {
       await newImage(product, img);
-      const data = await repo.post(product);
+      const data = await repo.post(product, token);
       dispatch(postProduct(data));
     } catch (error) {
       // Lo voy a a;adir despues cuando gestione errores
@@ -77,9 +82,9 @@ export function useProducts(repo: ProductsRepo) {
     }
   };
 
-  const productDelete = async (id: string) => {
+  const productDelete = async (id: string, token: string) => {
     try {
-      await repo.delete(id);
+      await repo.delete(id, token);
       dispatch(deleteProduct(id));
     } catch (error) {
       // Lo voy a a;adir despues cuando gestione errores

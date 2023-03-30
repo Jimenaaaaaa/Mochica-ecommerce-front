@@ -1,14 +1,18 @@
 import { SyntheticEvent, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProducts } from "../../hooks/use.products";
+import { useUsers } from "../../hooks/use.users";
 import { AddedProduct, Product } from "../../models/product";
 import { ProductsRepo } from "../../services/products/products.api.repo";
+import { UserRepo } from "../../services/users/users.api.repo";
 import styles from "./form.module.scss";
 
 export function Form() {
   const navigate = useNavigate();
   const { id } = useParams();
   const repo = useMemo(() => new ProductsRepo(), []);
+  const repoUser = useMemo(() => new UserRepo(), []);
+  const { users } = useUsers(repoUser);
   const { products, productPatch, productPost } = useProducts(repo);
   const product = products.selectedProduct;
 
@@ -34,10 +38,10 @@ export function Form() {
       filledProduct.type
         ? (filledProduct.type = select!.value)
         : (filledProduct.type = product.type);
-      productPatch(filledProduct, img!, product.img);
+      productPatch(filledProduct, img!, product.img, users.loggedUser.token!);
       navigate(`/details/${product.id}`);
     } else {
-      productPost(filledProduct as AddedProduct, img!);
+      productPost(filledProduct as AddedProduct, img!, users.loggedUser.token!);
     }
   };
 
@@ -74,8 +78,6 @@ export function Form() {
           <option value="jewerly">Jewerly</option>
           <option value="other">Other</option>
         </select>
-        {/* <label htmlFor="">Type: </label>
-        <input type="text" defaultValue={id ? product.type : ""} required /> */}
       </div>
       <div className={styles.form_line}>
         <label htmlFor="">Cone: </label>

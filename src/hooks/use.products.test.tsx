@@ -42,11 +42,15 @@ describe("Given the useProducts Custom Hook, an ApiRepo and a given component", 
         <>
           <button onClick={() => productsGetAll()}>getAll</button>
           <button onClick={() => productsGetById(mockId)}>getById</button>
-          <button onClick={() => productPatch(mockInfo, mockFile, "image")}>
+          <button
+            onClick={() => productPatch(mockInfo, mockFile, "image", "token")}
+          >
             patch
           </button>
-          <button onClick={() => productPost(mockInfo, mockFile)}>post</button>
-          <button onClick={() => productDelete(mockId)}>delete</button>
+          <button onClick={() => productPost(mockInfo, mockFile, "token")}>
+            post
+          </button>
+          <button onClick={() => productDelete(mockId, "token")}>delete</button>
         </>
       );
     };
