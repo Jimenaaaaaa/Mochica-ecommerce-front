@@ -1,4 +1,4 @@
-.enter {
+.form {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
@@ -67,7 +67,7 @@
 }
 
 @media (min-width: 1000px) {
-  .enter {
+  .form {
     margin: 5rem 27rem;
     &_options {
       font-family: sans-serif;

@@ -48,7 +48,7 @@ describe("Given the useUsers Custom Hook, an ApiRepo and a given component", () 
     });
   });
 
-  describe("When the TestComponent is rendered and the register button is clicked", () => {
+  describe("When we render the TestComponent and we click the register button", () => {
     test("Then, the userRegister function should be called", async () => {
       const elements = await screen.findAllByRole("button");
       await act(async () => userEvent.click(elements[0]));

@@ -14,28 +14,20 @@ export function useUsers(repo: UserRepo) {
   const login = async (info: LoginData) => {
     try {
       const data = await repo.loginUser(info);
-      // Mirar si cambio lo que devuelve el back
       dispatch(loginSlice(data));
-    } catch (error) {
-      // gestionar errores
-      // console.error((error as Error).message);
-    }
+    } catch (error) {}
   };
 
   const register = async (info: RegisterData) => {
     try {
       await repo.registerUser(info);
-    } catch (error) {
-      // console.error((error as Error).message);
-    }
+    } catch (error) {}
   };
 
   const addToCart = async (product: Product) => {
     try {
       dispatch(addToCartSlice(product));
-    } catch (error) {
-      // console.error((error as Error).message);
-    }
+    } catch (error) {}
   };
 
   return {
