@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/no-await-sync-query */
-import { AddedProduct} from "../../models/product";
+import { AddedProduct } from "../../models/product";
 import { ProductsRepo } from "./products.api.repo";
 
 describe("Given the Product repo", () => {
@@ -48,7 +48,7 @@ describe("Given the Product repo", () => {
         json: jest.fn().mockResolvedValue({ results: { name: "Product" } }),
       });
 
-      const patchProduct = await mockProductRepo.patch(
+      await mockProductRepo.patch(
         {
           name: "Product",
           id: "1",
