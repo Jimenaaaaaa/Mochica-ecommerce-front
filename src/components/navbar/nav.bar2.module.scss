@@ -120,19 +120,6 @@ nav:hover .submenu2 {
   }
 }
 
-.menu_poducts:hover .submenu_ul {
-  display: block;
-  @media (min-width: 640px) {
-    display: none;
-  }
-}
-
-// .menu_products:hover {
-//   .submenu_ul {
-//     display: initial;
-//   }
-// }
-
 @media (min-width: 640px) {
   .submenu,
   .submenu_ul {
