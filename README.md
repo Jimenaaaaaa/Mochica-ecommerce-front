@@ -14,7 +14,7 @@ This is an ecommerce project where users can browse ceramic products, add them t
 ## Technologies Used
 
 - Front-end: React-Redux, Firebase for image storage, and Sass for styling.
-- Back-end: MongoDB for data storage, Mongoose and Node.js.
+- Back-end: MongoDB for data storage, Express and Node.js.
 
 ## Getting Started
 
