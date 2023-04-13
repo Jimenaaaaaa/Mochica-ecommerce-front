@@ -20,10 +20,6 @@ This is an ecommerce project where users can browse ceramic products, add them t
 
 To get started, you will need to have Node.js and MongoDB installed on your local machine. Once you have cloned this repository, run `npm install` to install the required dependencies.
 
-You will also need to create a `.env` file in the root directory and add the following:
-
-MONGO_URI=<your_mongo_uri>
-
 To start the project, run `npm start` in the terminal. The project will run on `http://localhost:3000`.
 
 ## Info
